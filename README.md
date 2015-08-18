@@ -6,7 +6,7 @@ Yaml parser for [gopher-lua](https://github.com/yuin/gopher-lua)
 L := lua.NewState()
 defer L.Close()
 
-L.PreloadModule("yaml", Loader)
+L.PreloadModule("yaml", gluayaml.Loader)
 if err := L.DoString(`
 local yaml = require("yaml")
 local str = [==[
