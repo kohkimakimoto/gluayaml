@@ -2,6 +2,20 @@
 
 Yaml parser for [gopher-lua](https://github.com/yuin/gopher-lua)
 
+## Installation
+
+```
+go get github.com/kohkimakimoto/gluayaml
+```
+
+## API
+
+### `yaml.parse(string)`
+
+Parses yaml formatted string and returns a table. If this function fails, it returns `nil`, plus a string describing the error.
+
+## Usage
+
 ```go
 package main
 
@@ -34,3 +48,11 @@ print(tb.key2[2]) -- value3
 	}
 }
 ```
+
+## Author
+
+Kohki Makimoto <kohki.makimoto@gmail.com>
+
+## License
+
+MIT license.

@@ -138,6 +138,30 @@ assert(tb.eee.bb == "cc")
 	}
 }
 
+func TestParseError(t *testing.T) {
+	L := lua.NewState()
+	defer L.Close()
+
+	L.PreloadModule("yaml", Loader)
+	if err := L.DoString(`
+local yaml = require("yaml")
+
+local str = [==[
+- aaa
+aaaaa
+- bbb
+- ccc
+]==]
+
+local tb, err = yaml.parse(str)
+assert(tb == nil)
+
+
+	`); err != nil {
+		t.Error(err)
+	}
+}
+
 func TestDump(t *testing.T) {
 	L := lua.NewState()
 	defer L.Close()
